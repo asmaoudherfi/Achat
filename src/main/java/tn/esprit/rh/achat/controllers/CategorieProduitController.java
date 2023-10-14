@@ -35,8 +35,10 @@ public class CategorieProduitController {
 	@PostMapping("/add-categorieProduit")
 	@ResponseBody
 	public CategorieProduit addCategorieProduit(@RequestBody CategorieProduit cp) {
-		CategorieProduit categorieProduit = categorieProduitService.addCategorieProduit(cp);
+		CategorieProduit categorieProduit= new CategorieProduit(cp);
+		CategorieProduit categorieProduit = categorieProduitService.addCategorieProduit(categorieProduit);
 		return categorieProduit;
+
 	}
 
 	// http://localhost:8089/SpringMVC/categorieProduit/remove-categorieProduit/{categorieProduit-id}
