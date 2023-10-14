@@ -34,8 +34,9 @@ public class CategorieProduitController {
 	// http://localhost:8089/SpringMVC/categorieProduit/add-categorieProduit
 	@PostMapping("/add-categorieProduit")
 	@ResponseBody
-	public CategorieProduit addCategorieProduit(@RequestBody CategorieProduit cp) {
-		CategorieProduit categorieProduit = categorieProduitService.addCategorieProduit(cp);
+	public CategorieProduit addCategorieProduit(@RequestBody CategorieProduit cp) { 
+		CategorieProduit categorieProduit= new CategorieProduit(cp);
+		CategorieProduit categorieProduit = categorieProduitService.addCategorieProduit(categorieProduit);
 		return categorieProduit;
 	}
 
@@ -50,7 +51,8 @@ public class CategorieProduitController {
 	@PutMapping("/modify-categorieProduit")
 	@ResponseBody
 	public CategorieProduit modifyCategorieProduit(@RequestBody CategorieProduit categorieProduit) {
-		return categorieProduitService.updateCategorieProduit(categorieProduit);
+		CategorieProduit cp=new CategorieProduit(categorieProduit);
+		return categorieProduitService.updateCategorieProduit(cp);
 	}
 
 	
