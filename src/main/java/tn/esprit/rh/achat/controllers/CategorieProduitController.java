@@ -35,8 +35,8 @@ public class CategorieProduitController {
 	@PostMapping("/add-categorieProduit")
 	@ResponseBody
 	public CategorieProduit addCategorieProduit(@RequestBody CategorieProduit cp) { 
-		CategorieProduit categorieProduit= new CategorieProduit(cp.idCategorieProduit,cp.codeCategorie,cp.libelleCategorie,cp.produits);
-		CategorieProduit categorieProduit = categorieProduitService.addCategorieProduit(categorieProduit);
+		CategorieProduit categorieProduit= new CategorieProduit(cp.getIdCategorieProduit(),cp.getCodeCategorie(),cp.getLibelleCategorie(),cp.getProduits());
+		CategorieProduit categorieP = categorieProduitService.addCategorieProduit(categorieProduit);
 		return categorieProduit;
 	}
 
@@ -51,7 +51,7 @@ public class CategorieProduitController {
 	@PutMapping("/modify-categorieProduit")
 	@ResponseBody
 	public CategorieProduit modifyCategorieProduit(@RequestBody CategorieProduit categorieProduit) {
-		CategorieProduit cp=new CategorieProduit(cp.idCategorieProduit,cp.codeCategorie,cp.libelleCategorie,cp.produits);
+		CategorieProduit cp=new CategorieProduit(cp.getIdCategorieProduit(),cp.getCodeCategorie(),cp.getLibelleCategorie(),cp.getProduits());
 		return categorieProduitService.updateCategorieProduit(cp);
 	}
 
