@@ -9,6 +9,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import tn.esprit.rh.achat.entities.Facture;
 import tn.esprit.rh.achat.entities.Fournisseur;
 import tn.esprit.rh.achat.repositories.*;
+import tn.esprit.rh.achat.services.FactureServiceImpl;
+import tn.esprit.rh.achat.services.OperateurServiceImpl;
+import tn.esprit.rh.achat.services.ReglementServiceImpl;
 
 import java.util.*;
 
@@ -19,9 +22,9 @@ import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 
-public class FactureServiceImpTest {
+public class FactureServiceImplTest {
     @InjectMocks
-    tn.esprit.rh.achat.FactureServiceImpl factureService;
+    FactureServiceImpl factureService;
 
     @Mock
     FactureRepository factureRepository;
@@ -39,9 +42,9 @@ public class FactureServiceImpTest {
     ProduitRepository produitRepository;
 
     @Mock
-    tn.esprit.rh.achat.ReglementServiceImpl reglementService;
+    ReglementServiceImpl reglementService;
     @Mock
-    tn.esprit.rh.achat.OperateurServiceImpl operateurService;
+    OperateurServiceImpl operateurService;
 
     @BeforeEach
     public void setUp() {
