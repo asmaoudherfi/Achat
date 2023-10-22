@@ -1,29 +1,35 @@
 package tn.esprit.rh.achat.service;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import tn.esprit.rh.achat.entities.Produit;
 import tn.esprit.rh.achat.repositories.ProduitRepository;
 import tn.esprit.rh.achat.services.ProduitServiceImpl;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
 
-@ExtendWith(SpringExtension.class)
-@SpringBootTest
+
+
 public class ProductServiceImplTest {
-    @Autowired
+    @InjectMocks
     public ProduitServiceImpl produitServiceImpl;
-    @Autowired
+    @Mock
     public ProduitRepository produitRepository;
+    @BeforeEach
+    public void setup() {
+        MockitoAnnotations.openMocks(this);
+    }
     @Test
     public void TestAddProduit() {
         Produit produit = new Produit();
-        produit.setCodeProduit("test");
-        produitRepository.save(produit);
+
+        when(produitRepository.save(produit)).thenReturn(produit);
+
         Produit result = produitServiceImpl.addProduit(produit);
-        assertEquals("test", result.getCodeProduit());
+
+        assertEquals(produit, result);
     }
 }
