@@ -63,8 +63,9 @@ public class ProduitServiceImpl implements IProduitService {
 		Stock stock = stockRepository.findById(idStock).orElse(null);
 		produit.setStock(stock);
 		produitRepository.save(produit);
-
 	}
+
+
 
 
 }
