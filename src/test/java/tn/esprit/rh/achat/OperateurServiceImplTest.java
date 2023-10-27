@@ -76,9 +76,7 @@ public class OperateurServiceImplTest {
         Long id = 1L;
         Operateur operateur = new Operateur();
         when(operateurRepository.findById(id)).thenReturn(Optional.of(operateur));
-
         Operateur retrievedOperateur = operateurService.retrieveOperateur(id);
-
         assertNotNull(retrievedOperateur);
     }
 }
