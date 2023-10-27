@@ -11,4 +11,5 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     environment:
+        MYSQL_DATABASE: achat
         MYSQL_ROOT_PASSWORD: root
