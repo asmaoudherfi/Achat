@@ -4,6 +4,12 @@ services:
     image: alaaeddinezarrouk/achat:1.0
     ports:
       - "80:80"
+    depends_on:
+      - sql_database
+    environment:
+        SPRING_DATASOURCE_URL: jdbc:mysql://sql_database:3306/achat?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+        SPRING_DATASOURCE_USERNAME: root
+        SPRING_DATASOURCE_PASSWORD: root
   sql_database:
     image: mysql
     ports:
