@@ -35,6 +35,7 @@ public class FactureServiceImpl implements IFactureService {
 		for (Facture facture : factures) {
 			log.info(" facture : " + facture);
 		}
+		//
 		return factures;
 	}
 
