@@ -16,7 +16,7 @@ services:
       - mynetwork
 
   achat_back:
-    image: asmaoudherfi/achat:1.0
+    image: asmaoudherfi/achatprojet:1.0
     depends_on:
       - mysqldb
     ports:
