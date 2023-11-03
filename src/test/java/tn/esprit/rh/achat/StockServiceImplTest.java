@@ -67,20 +67,20 @@ public class StockServiceImplTest {
 	@Test
 	void testUpdateStock() {
 
-		Stock stock = new Stock();
+	Stock stock = new Stock();
 
 
-		when(stockRepository.save(stock)).thenReturn(stock);
+	when(stockRepository.save(stock)).thenReturn(stock);
 
-		// Appelez la méthode updateStock
-		Stock result = stockService.updateStock(stock);
+	// Appelez la méthode updateStock
+	Stock result = stockService.updateStock(stock);
 
-		// Vérifiez que la méthode save a été appelée avec l'objet Stock
-		verify(stockRepository).save(stock);
+	// Vérifiez que la méthode save a été appelée avec l'objet Stock
+	verify(stockRepository).save(stock);
 
-		// Vérifiez que l'objet renvoyé par la méthode est égal à l'objet fictif
-		assertEquals(stock, result);
-	}
+	// Vérifiez que l'objet renvoyé par la méthode est égal à l'objet fictif
+	assertEquals(stock, result);
+}
 	@Test
 	void testRetrieveStock() {
 		Long stockId = 1L; // Remplacez cette valeur par l'identifiant du stock que vous souhaitez récupérer
