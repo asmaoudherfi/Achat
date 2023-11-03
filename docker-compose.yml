@@ -33,6 +33,16 @@ services:
       - ./m2:/root/.m2
     networks:
       - mynetwork
+  
+  achat_front:
+    image: alaaeddinezarrouk/angular-app-image:1.0
+    restart: on-failure
+    ports:
+      - "4200:4200"
+    volumes:
+      - ./m2:/root/.m2
+    networks:
+      - mynetwork
 
 networks:
   mynetwork:
