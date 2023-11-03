@@ -38,7 +38,7 @@ services:
     image: alaaeddinezarrouk/angular-app-image:1.0
     restart: on-failure
     ports:
-      - "4200:4200"
+      - "80:80"
     volumes:
       - ./m2:/root/.m2
     networks:
