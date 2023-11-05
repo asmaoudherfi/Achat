@@ -78,17 +78,37 @@ stage('docker build') {
 
 
 }
-stage('docker push') {
-    def dockerImage = docker.image("asmaoudherfi/achatprojet:1.0")
+//stage('docker push') {
+ //   def dockerImage = docker.image("asmaoudherfi/achatprojet:1.0")
 
-        docker.withRegistry('https://registry.hub.docker.com','dckr_pat_OHzbqSzlZkDPMuKuyUrO0hkTNDU') {
-                        dockerImage.push()
-                    }
+        //docker.withRegistry('https://registry.hub.docker.com','dckr_pat_OHzbqSzlZkDPMuKuyUrO0hkTNDU') {
+                       // dockerImage.push()
+                  //  }
 
 
-}
+//}
 stage('Build and Run Docker Compose') {
         sh 'docker compose up -d'
     }
+    stage('Prometheus Metrics Scraping') {
+
+                // Liste des noms de job Prometheus à scraper
+                def prometheusJobs = [
+                    'Nexus',
+                    'SonarQube',
+                    'docker',
+                    'jenkins',
+                    'prometheus'
+                ]
+
+                def prometheusURL = 'http://192.168.33.10:9090' // URL de votre serveur Prometheus
+
+                // Parcourir la liste des jobs et déclencher le scraping pour chaque job
+                for (def jobName in prometheusJobs) {
+                    def prometheusScrapeCommand = "curl -X GET $prometheusURL/api/v1/targets?match[]=$jobName"
+                    sh script: prometheusScrapeCommand, returnStatus: true
+                    echo "Metrics scraped for $jobName"
+                }
+
 
 }
