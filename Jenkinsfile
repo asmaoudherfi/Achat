@@ -71,22 +71,22 @@ stage('Test with JaCoCo') {
 
 
 stage('slack') {
-          slackSend channel: 'devopss', message: 'bonjour asma voici un nouveau bluid ${env.JOB_NAME} [${env.BUILD_NUMBER}]  '
+          slackSend channel: 'devopss', message: 'bonjour asma voici un nouveau build '
 }
 stage('docker build') {
         sh 'docker build -t asmaoudherfi/achatprojet:1.0 .'
 
 
 }
-//stage('docker push') {
- //   def dockerImage = docker.image("asmaoudherfi/achatprojet:1.0")
+stage('docker push') {
+    def dockerImage = docker.image("asmaoudherfi/achatprojet:1.0")
 
-        //docker.withRegistry('https://registry.hub.docker.com','dckr_pat_OHzbqSzlZkDPMuKuyUrO0hkTNDU') {
-                       // dockerImage.push()
-                  //  }
+        docker.withRegistry('https://registry.hub.docker.com','dckr_pat_OHzbqSzlZkDPMuKuyUrO0hkTNDU') {
+                        dockerImage.push()
+                    }
 
 
-//}
+}
 stage('Build and Run Docker Compose') {
         sh 'docker compose up -d'
     }
