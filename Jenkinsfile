@@ -109,6 +109,7 @@ stage('Build and Run Docker Compose') {
                     sh script: prometheusScrapeCommand, returnStatus: true
                     echo "Metrics scraped for $jobName"
                 }
+                }
 
 
 }
