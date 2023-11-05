@@ -71,7 +71,7 @@ stage('Test with JaCoCo') {
 
 
 stage('slack') {
-          slackSend channel: 'devopss', message: 'bonjour asma voici un nouveau bluid'
+          slackSend channel: 'devopss', message: 'bonjour asma voici un nouveau bluid ${env.JOB_NAME} [${env.BUILD_NUMBER}]'
 }
 stage('docker build') {
         sh 'docker build -t asmaoudherfi/achatprojet:1.0 .'
