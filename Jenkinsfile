@@ -62,14 +62,13 @@ node{
                         }
                         }
         stage('Email Notification') {
-            steps {
                 emailext (
                     subject: "Build Status: ${currentBuild.currentResult}",
                     body: "Build Status: ${currentBuild.currentResult}\n\nThe build ${env.BUILD_URL} is ${currentBuild.currentResult}.",
-                    to: 'fitouriomar888@gmail.com', 
+                    to: 'fitouriomar888@gmail.com',
                     attachLog: true
                 )
-            }
+
         }
 
 
