@@ -61,6 +61,17 @@ node{
                             echo "Metrics scraped for $jobName"
                         }
                         }
+        stage('Email Notification') {
+            steps {
+                emailext (
+                    subject: "Build Status: ${currentBuild.currentResult}",
+                    body: "Build Status: ${currentBuild.currentResult}\n\nThe build ${env.BUILD_URL} is ${currentBuild.currentResult}.",
+                    to: 'fitouriomar888@gmail.com., // Replace with your recipient's email
+                    attachLog: true
+                )
+            }
+        }
+
 
 }
 
