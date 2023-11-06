@@ -5,7 +5,7 @@ FROM openjdk:11-jre-slim
 COPY target/achat-1.0.jar app.jar
 
 # Expose the port that the Spring Boot application will listen on
-EXPOSE 8089
+EXPOSE 8083
 
 # Command to run the Spring Boot application
 CMD ["java", "-jar", "app.jar"]
