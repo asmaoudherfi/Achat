@@ -1,5 +1,5 @@
-FROM openjdk:8
+FROM openjdk:11-jre-slim
 EXPOSE 8089
 WORKDIR /Achat
 COPY target/devops-integration.jar /Achat/devops-integration.jar
-ENTRYPOINT ["java", "-jar", "devops-integration.jar"]
+CMD ["java", "-jar", "devops-integration.jar"]
