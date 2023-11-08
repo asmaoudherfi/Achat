@@ -80,15 +80,15 @@ stage('docker build') {
 
 
 }
-//stage('docker push') {
-    //def dockerImage = docker.image("asmaoudherfi/achatprojet:1.0")
+stage('docker push') {
+    def dockerImage = docker.image("asmaoudherfi/achatprojet:1.0")
 
-        //docker.withRegistry('https://registry.hub.docker.com','dckr_pat_OHzbqSzlZkDPMuKuyUrO0hkTNDU') {
-                     //   dockerImage.push()
-                   // }
+        docker.withRegistry('https://registry.hub.docker.com','dckr_pat_OHzbqSzlZkDPMuKuyUrO0hkTNDU') {
+                       dockerImage.push()
+                   }
 
 
-//}
+}
 stage('Build and Run Docker Compose') {
         sh 'docker compose up -d'
     }
