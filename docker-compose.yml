@@ -35,7 +35,7 @@ services:
       - mynetwork
   
   achat_front:
-    image: alaaeddinezarrouk/angular-app-image:1.0
+    image: alaaeddinezarrouk/achat-front:1.0
     restart: on-failure
     ports:
       - "80:80"
