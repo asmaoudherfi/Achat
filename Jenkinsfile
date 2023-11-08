@@ -43,11 +43,6 @@ node{
           repository: 'maven-project',
           version: "version '${env.JOB_NAME} [${env.BUILD_NUMBER}]'"
     }
-
-    stage('slack') {
-          slackSend channel: 'achat-pipeline', message: 'Build is completed check the artifact ! '
-    }
-
     stage('docker build') {
         sh 'docker build -t alaaeddinezarrouk/achat:1.0 .'
     }
@@ -60,6 +55,9 @@ node{
     }
     stage('Build and Run Docker Compose') {
         sh 'docker compose up -d'
+    }
+    stage('Mail notification'){ 
+        mail bcc: '', body: 'Applications are successfully deployed you can now check them out . ', cc: '', from: 'alaazarrouk99@gmail.com', replyTo: '', subject: 'Jenkins-notification: App deployment', to: 'alaazarrouk6799@gmail.com'
     }
 
 
