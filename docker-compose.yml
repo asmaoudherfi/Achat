@@ -36,7 +36,7 @@ services:
   
   achat_front:
     image: alaaeddinezarrouk/achat-front:1.0
-    restart: on-failure
+    restart: unless-stopped
     ports:
       - "80:80"
     volumes:
