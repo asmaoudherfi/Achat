@@ -16,7 +16,7 @@ services:
       - mynetwork
 
   achat_back:
-    image: maryembougeurra/achat:1.0
+    image: nourchene12/achat:1.0
     depends_on:
       - mysqldb
     restart: on-failure
