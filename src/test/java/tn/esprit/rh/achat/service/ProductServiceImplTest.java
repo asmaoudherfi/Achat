@@ -2,9 +2,11 @@ package tn.esprit.rh.achat.service;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 import tn.esprit.rh.achat.entities.Produit;
 import tn.esprit.rh.achat.repositories.ProduitRepository;
 import tn.esprit.rh.achat.services.ProduitServiceImpl;
@@ -21,7 +23,7 @@ import static org.mockito.Mockito.*;
 
 
 
-
+@ExtendWith(MockitoExtension.class)
 public class ProductServiceImplTest {
     @InjectMocks
     public ProduitServiceImpl produitServiceImpl;
