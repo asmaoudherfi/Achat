@@ -72,7 +72,7 @@ stage('Test with JaCoCo') {
 
 stage('slack') {
  def buildNumber = env.BUILD_NUMBER
-   def message = "Bonjour Asma, voici un nouveau build ${buildNumber}"
+   def message = "Bonjour Asma, voici un nouveau build  numero ${buildNumber}"
           slackSend channel: 'devopss', message: message
 }
 stage('docker build') {
